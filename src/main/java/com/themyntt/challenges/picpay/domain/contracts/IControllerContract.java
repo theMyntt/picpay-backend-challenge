@@ -1,5 +1,7 @@
 package com.themyntt.challenges.picpay.domain.contracts;
 
+import org.springframework.http.ResponseEntity;
+
 public interface IControllerContract<Input, Output> {
-    Output perform(Input dto);
+    ResponseEntity<Output> perform(Input dto);
 }

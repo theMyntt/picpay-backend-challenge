@@ -1,5 +1,7 @@
 package com.themyntt.challenges.picpay.domain.contracts;
 
+import org.springframework.http.ResponseEntity;
+
 public interface IUsecaseContract<Input, Output> {
-    Output run(Input dto);
+    ResponseEntity<Output> run(Input dto);
 }
