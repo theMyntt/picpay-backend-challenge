@@ -2,6 +2,11 @@ spring:
   application:
     name: PicPay-Challenge
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
   datasource:
     url: jdbc:mysql://localhost:3306/picpay_challenge
     username: root
