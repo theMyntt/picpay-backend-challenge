@@ -1,6 +1,7 @@
 package com.themyntt.challenges.picpay.application.usecases;
 
 import com.themyntt.challenges.picpay.application.mappers.UserMapper;
+import com.themyntt.challenges.picpay.application.utils.CPFValidator;
 import com.themyntt.challenges.picpay.domain.aggregates.UserAggregate;
 import com.themyntt.challenges.picpay.domain.contracts.IUsecaseContract;
 import com.themyntt.challenges.picpay.domain.core.StandardResponse;
@@ -24,7 +25,10 @@ public class NewUserUsecase implements IUsecaseContract<NewUserDTO, StandardResp
     @Override
     public ResponseEntity<StandardResponse> run(NewUserDTO dto) {
         try {
-            UserAggregate aggregate = new UserAggregate(dto.getName(), dto.getCpf(), dto.getEmail(), dto.getPassword(), dto.getType(), 0);
+            String cpf = CPFValidator.validate(dto.getCpf());
+            String name = dto.getName().trim().replaceAll("\\s+", " ").toUpperCase();
+
+            UserAggregate aggregate = new UserAggregate(name, cpf, dto.getEmail().toLowerCase(), dto.getPassword(), dto.getType(), 0);
 
             UserEntity entity = mapper.toPersistance(aggregate);
 
@@ -33,6 +37,8 @@ public class NewUserUsecase implements IUsecaseContract<NewUserDTO, StandardResp
             return new ResponseEntity<>(new StandardResponse("User successfully created", 200), HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
             return new ResponseEntity<>(new StandardResponse("User already exists", 409), HttpStatus.CONFLICT);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(new StandardResponse("Invalid CPF", 400), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             return new ResponseEntity<>(new StandardResponse("Internal server error", 500), HttpStatus.INTERNAL_SERVER_ERROR);
         }
