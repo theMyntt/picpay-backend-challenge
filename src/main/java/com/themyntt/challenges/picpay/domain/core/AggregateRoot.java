@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class AggregateRoot {
-    protected int id;
+    protected Long id;
     protected Date createdAt;
     protected Date updatedAt;
 }
