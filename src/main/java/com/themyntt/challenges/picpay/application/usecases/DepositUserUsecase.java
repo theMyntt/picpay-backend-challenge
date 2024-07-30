@@ -4,6 +4,7 @@ import com.themyntt.challenges.picpay.application.mappers.UserMapper;
 import com.themyntt.challenges.picpay.domain.aggregates.UserAggregate;
 import com.themyntt.challenges.picpay.domain.contracts.IUsecaseContract;
 import com.themyntt.challenges.picpay.domain.core.StandardResponse;
+import com.themyntt.challenges.picpay.domain.enums.UserType;
 import com.themyntt.challenges.picpay.domain.models.DepositUserResponseModel;
 import com.themyntt.challenges.picpay.infrastructure.dtos.DepositUserDTO;
 import com.themyntt.challenges.picpay.infrastructure.entities.UserEntity;
@@ -32,6 +33,10 @@ public class DepositUserUsecase implements IUsecaseContract<DepositUserDTO, Depo
         }
 
         UserAggregate aggregate = mapper.toDomain(optional.get());
+
+        if (aggregate.getType() == UserType.SHOPKEEPER) {
+            return new ResponseEntity<>(new DepositUserResponseModel("You don't have permission to do this", 403), HttpStatus.FORBIDDEN);
+        }
 
         if (dto.getValue() < 0 && Math.abs(dto.getValue()) > aggregate.getSavedValue()) {
             return new ResponseEntity<>(new DepositUserResponseModel("You don't have enough money for this operation", 400), HttpStatus.BAD_REQUEST);
