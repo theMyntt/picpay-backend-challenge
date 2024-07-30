@@ -29,4 +29,7 @@ public class UserEntity extends EntityRoot {
 
     @Column(name = "type")
     private UserType type;
+
+    @Column(name = "savedValue")
+    private double savedValue;
 }
