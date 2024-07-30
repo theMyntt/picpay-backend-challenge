@@ -1,4 +1,4 @@
-package com.themyntt.challenges.picpay.application.usecases;
+package com.themyntt.challenges.picpay.application.mappers;
 
 import com.themyntt.challenges.picpay.domain.aggregates.UserAggregate;
 import com.themyntt.challenges.picpay.domain.contracts.IMapperContract;
