@@ -12,5 +12,5 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public class StandardResponse {
     private String message;
-    private HttpStatus statusCode;
+    private int statusCode;
 }
