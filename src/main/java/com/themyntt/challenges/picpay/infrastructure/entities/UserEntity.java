@@ -1,20 +1,22 @@
 package com.themyntt.challenges.picpay.infrastructure.entities;
 
-import com.themyntt.challenges.picpay.domain.core.EntityRoot;
 import com.themyntt.challenges.picpay.domain.enums.UserType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import java.util.Date;
 
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@Table(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
-public class UserEntity extends EntityRoot {
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "name")
     private String name;
 
@@ -28,8 +30,15 @@ public class UserEntity extends EntityRoot {
     private String password;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private UserType type;
 
     @Column(name = "savedValue")
     private double savedValue;
+
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    private Date updatedAt;
 }
