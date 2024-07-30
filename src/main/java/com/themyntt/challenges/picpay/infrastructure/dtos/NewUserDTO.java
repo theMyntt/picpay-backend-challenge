@@ -30,6 +30,5 @@ public class NewUserDTO {
     private String password;
 
     @NotNull
-    @NotEmpty
     private UserType type;
 }
