@@ -4,6 +4,7 @@ import com.themyntt.challenges.picpay.application.usecases.NewUserUsecase;
 import com.themyntt.challenges.picpay.domain.contracts.IControllerContract;
 import com.themyntt.challenges.picpay.domain.core.StandardResponse;
 import com.themyntt.challenges.picpay.infrastructure.dtos.NewUserDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class NewUserController implements IControllerContract<NewUserDTO, Standa
 
     @Override
     @PostMapping("/new/")
-    public ResponseEntity<StandardResponse> perform(@RequestBody NewUserDTO dto) {
+    public ResponseEntity<StandardResponse> perform(@Valid @RequestBody NewUserDTO dto) {
         return useCase.run(dto);
     }
 }
