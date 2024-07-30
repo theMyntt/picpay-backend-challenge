@@ -9,8 +9,8 @@ import java.util.Date;
 @Data
 public class EntityRoot {
     @Id
-    @Column(name = "name")
-    protected String id;
+    @Column(name = "id")
+    protected int id;
 
     @Column(name = "createdAt")
     protected Date createdAt;
