@@ -3,9 +3,11 @@ package com.themyntt.challenges.picpay.infrastructure.entities;
 import com.themyntt.challenges.picpay.domain.core.EntityRoot;
 import com.themyntt.challenges.picpay.domain.enums.UserType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
+@Entity
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
