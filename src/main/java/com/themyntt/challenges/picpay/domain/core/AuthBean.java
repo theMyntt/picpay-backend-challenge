@@ -18,7 +18,7 @@ public class AuthBean {
 
     @Bean
     public AuthMiddleware tokenFilter() {
-        List<String> protectedPaths = List.of();
+        List<String> protectedPaths = List.of("/api/user/v1/deposit/");
         return new AuthMiddleware(protectedPaths);
     }
 
