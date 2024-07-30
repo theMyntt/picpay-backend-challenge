@@ -36,6 +36,9 @@ public class UserEntity {
     @Column(name = "savedValue")
     private double savedValue;
 
+    @Column(name = "token")
+    private String token;
+
     @Column(name = "createdAt")
     private Date createdAt;
 

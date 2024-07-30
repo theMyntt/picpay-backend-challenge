@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserMapper implements IMapperContract<UserEntity, UserAggregate> {
     @Override
     public UserAggregate toDomain(UserEntity userEntity) {
-        return new UserAggregate(userEntity.getId(), userEntity.getName(), userEntity.getCpf(), userEntity.getEmail(), userEntity.getPassword() ,userEntity.getType(), userEntity.getSavedValue(), userEntity.getCreatedAt(), userEntity.getUpdatedAt());
+        return new UserAggregate(userEntity.getId(), userEntity.getName(), userEntity.getCpf(), userEntity.getEmail(), userEntity.getPassword() ,userEntity.getType(), userEntity.getSavedValue(), userEntity.getToken(), userEntity.getCreatedAt(), userEntity.getUpdatedAt());
     }
 
     @Override
@@ -25,6 +25,7 @@ public class UserMapper implements IMapperContract<UserEntity, UserAggregate> {
         user.setCreatedAt(entity.getCreatedAt());
         user.setUpdatedAt(entity.getUpdatedAt());
         user.setSavedValue(entity.getSavedValue());
+        user.setToken(entity.getToken());
 
         return user;
     }

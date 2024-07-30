@@ -39,6 +39,7 @@ public class LoginUserUsecase implements IUsecaseContract<LoginUserDTO, LoginUse
 
             user.setId(entity.getId());
             user.setName(entity.getName());
+            user.setToken(entity.getToken());
 
             LoginUserResponseModel response = new LoginUserResponseModel("User successfully logged", 200, user);
             return new ResponseEntity<>(response, HttpStatus.OK);
