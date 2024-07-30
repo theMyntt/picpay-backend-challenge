@@ -3,7 +3,9 @@ package com.themyntt.challenges.picpay.application.mappers;
 import com.themyntt.challenges.picpay.domain.aggregates.UserAggregate;
 import com.themyntt.challenges.picpay.domain.contracts.IMapperContract;
 import com.themyntt.challenges.picpay.infrastructure.entities.UserEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserMapper implements IMapperContract<UserEntity, UserAggregate> {
     @Override
     public UserAggregate toDomain(UserEntity userEntity) {
