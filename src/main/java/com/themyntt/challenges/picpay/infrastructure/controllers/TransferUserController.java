@@ -3,6 +3,7 @@ package com.themyntt.challenges.picpay.infrastructure.controllers;
 import com.themyntt.challenges.picpay.application.usecases.TransferUserUsecase;
 import com.themyntt.challenges.picpay.domain.contracts.IControllerContract;
 import com.themyntt.challenges.picpay.domain.core.StandardResponse;
+import com.themyntt.challenges.picpay.domain.models.TransferUserResponseModel;
 import com.themyntt.challenges.picpay.infrastructure.dtos.TransferUserDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/user/v1/")
-public class TransferUserController implements IControllerContract<TransferUserDTO, StandardResponse> {
+public class TransferUserController implements IControllerContract<TransferUserDTO, TransferUserResponseModel> {
     @Autowired
     private TransferUserUsecase useCase;
 
     @Override
     @PostMapping("/transfer/")
-    public ResponseEntity<StandardResponse> perform(@Valid @RequestBody TransferUserDTO dto) {
+    public ResponseEntity<TransferUserResponseModel> perform(@Valid @RequestBody TransferUserDTO dto) {
         return useCase.run(dto);
     }
 }
