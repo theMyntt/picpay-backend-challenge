@@ -1,0 +1,20 @@
+@authorizeRoute = https://util.devi.tools/api/v2/authorize
+@notifyRoute = https://util.devi.tools/api/v1/notify
+
+### EXTERNAL APIS / AUTHORIZE
+GET {{authorizeRoute}}
+
+### EXTERNAL APIS / NOTIFY
+POST {{notifyRoute}}
+
+### NEW USER || NEW SHOPKEEPER ROUTE
+POST http://localhost:8080/api/user/v1/new/
+Content-Type: application/json
+
+{
+  "name": "Gabriel Araújo  Lima ",
+  "cpf": "000.000.000-00", // VALID CPF
+  "email": "gabriel.araujo2902@outlook.com",
+  "password": "12345678",
+  "type": "USER" // USER || SHOPKEEPER
+}
