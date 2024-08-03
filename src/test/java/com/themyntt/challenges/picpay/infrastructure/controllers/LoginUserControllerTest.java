@@ -7,6 +7,7 @@ import com.themyntt.challenges.picpay.infrastructure.dtos.LoginUserDTO;
 import com.themyntt.challenges.picpay.infrastructure.entities.UserEntity;
 import com.themyntt.challenges.picpay.infrastructure.repositories.IUserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,6 +54,7 @@ class LoginUserControllerTest {
     }
 
     @Test
+    @DisplayName("Should return user name and token")
     void perform() throws Exception {
         LoginUserDTO dto = LoginUserDTO.builder()
                 .email(this.entity.getEmail())

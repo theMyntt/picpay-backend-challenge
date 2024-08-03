@@ -6,6 +6,7 @@ import com.themyntt.challenges.picpay.domain.enums.UserType;
 import com.themyntt.challenges.picpay.infrastructure.dtos.NewUserDTO;
 import com.themyntt.challenges.picpay.infrastructure.entities.UserEntity;
 import com.themyntt.challenges.picpay.infrastructure.repositories.IUserRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +43,7 @@ class NewUserControllerTest {
     }
 
     @Test
+    @DisplayName("Should create user")
     void perform() throws Exception {
         ResponseEntity<StandardResponse> response = controller.perform(this.dto);
 
