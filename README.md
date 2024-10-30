@@ -1,4 +1,4 @@
-# picpay-desafio-backend
+# picpay-backend-challenge
 
 - Developed with Java 21 and Springboot 3.3.2
 - Maven based project
